@@ -28,8 +28,13 @@ public class NameList {
 	}
 	
 	public void carregarNomes() {
-        Path path = Paths.get("X:\\coding\\Modularizacao\\src\\aedT1\\newNameList.txt"); //pega direto na source
-         try (BufferedReader br = Files.newBufferedReader(path, Charset.defaultCharset())) {
+		Path path;
+		if(System.getProperty("os.name").equals("Linux")){
+        	path = Paths.get(System.getProperty("user.dir") + "//src//newNameList.txt"); //pega direto na source
+		} else{
+			path = Paths.get(System.getProperty("user.dir") + "\\src\\newNameList.txt");
+		}
+        try (BufferedReader br = Files.newBufferedReader(path, Charset.defaultCharset())) {
            String linha = null;
            while ((linha = br.readLine()) != null) {   
               // separador: :
